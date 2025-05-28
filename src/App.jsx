@@ -29,7 +29,18 @@ function AppWrapper() {
 
   return (
     <>
-      <ToastContainer position="top-center" autoClose={3000} />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {!isLoginPage && <Navbar />}
       <div className="app-inner">
         {!isLoginPage && <Sidebar />}
@@ -38,24 +49,47 @@ function AppWrapper() {
             <Route path="/login" element={<Login />} />
             <Route
               path="/"
-              element={<Navigate to="/admin-dashboard/services" />}
+              element={<Navigate to="/admin-dashboard/services" replace />}
             />
             <Route
               path="/admin-dashboard/services"
-              element={<ServicesList />}
+              element={
+                <ProtectedRoute>
+                  <ServicesList />
+                </ProtectedRoute>
+              }
             />
             <Route
               path="/admin-dashboard/services/:serviceId"
-              element={<ServiceDetails />}
+              element={
+                <ProtectedRoute>
+                  <ServiceDetails />
+                </ProtectedRoute>
+              }
             />
             <Route
               path="/admin-dashboard/reactivate"
-              element={<ReactivatePage />}
+              element={
+                <ProtectedRoute>
+                  <ReactivatePage />
+                </ProtectedRoute>
+              }
             />
-            <Route path="/admin-dashboard/email" element={<EmailPage />} />
+            <Route
+              path="/admin-dashboard/email"
+              element={
+                <ProtectedRoute>
+                  <EmailPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/admin-dashboard/complaints"
-              element={<ComplaintsPage />}
+              element={
+                <ProtectedRoute>
+                  <ComplaintsPage />
+                </ProtectedRoute>
+              }
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,0 +1,290 @@
+/* استيراد الخطوط العربية */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap');
+
+/* إعدادات عامة للصفحة */
+.page-box {
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  background: linear-gradient(135deg, #f7fbf9 0%, #e8f5eb 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 
+              0 8px 16px rgba(0, 0, 0, 0.08),
+              inset 0 -5px 10px rgba(255, 255, 255, 0.8);
+  max-width: 950px;
+  width: 95%;
+  margin: 80px auto 40px;
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.page-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.15), 
+              0 12px 20px rgba(0, 0, 0, 0.12),
+              inset 0 -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+/* زخرفة خلفية */
+.page-box::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(28, 160, 77, 0.15) 0%, rgba(10, 110, 49, 0.05) 60%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.page-box::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(28, 160, 77, 0.12) 0%, rgba(10, 110, 49, 0.04) 60%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* تنسيق العناوين */
+.page-box h2 {
+  color: #0a6e31;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  position: relative;
+  display: inline-block;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.page-box h2::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #0a6e31, transparent);
+  margin: 12px auto 0;
+  border-radius: 5px;
+}
+
+/* تنسيق الوصف */
+.page-box p {
+  color: #2e5e41;
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 50px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* تنسيق زر التفعيل */
+.reactivate-button {
+  background: linear-gradient(135deg, #0a6e31 0%, #1ca04d 100%);
+  color: white;
+  border: none;
+  padding: 18px 45px;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 20px rgba(28, 160, 77, 0.3);
+  overflow: hidden;
+  min-width: 240px;
+}
+
+.reactivate-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-20deg);
+  transition: all 0.7s ease;
+  z-index: -1;
+}
+
+.reactivate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(28, 160, 77, 0.4);
+  background: linear-gradient(135deg, #1ca04d 0%, #0a6e31 100%);
+}
+
+.reactivate-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 15px rgba(28, 160, 77, 0.4);
+}
+
+.reactivate-button:hover::before {
+  width: 120%;
+  left: -10%;
+}
+
+/* تأثير نبض عند تحميل الصفحة */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.page-box {
+  animation: pulse 1.5s ease-in-out;
+}
+
+/* تأثيرات إضافية - أيقونة تعليمية */
+.page-box h2::before {
+  content: "♻️";
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 6s linear infinite;
+  font-size: 28px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* إضافة أيقونة لطيفة بجانب العنوان */
+.page-box h2 {
+  position: relative;
+}
+
+.page-box h2:after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #0a6e31, transparent);
+  margin: 15px auto 0;
+  border-radius: 5px;
+}
+
+/* إضافة صورة زخرفية */
+.page-box {
+  position: relative;
+}
+
+/* إضافة تأثير ظل داخلي إضافي */
+.page-box {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 
+              0 8px 16px rgba(0, 0, 0, 0.08),
+              inset 0 0 80px rgba(28, 160, 77, 0.05);
+}
+
+/* إضافة تأثير خلفية إضافي */
+.page-box {
+  background: 
+    linear-gradient(135deg, #f7fbf9 0%, #e8f5eb 100%),
+    repeating-linear-gradient(45deg, 
+      rgba(28, 160, 77, 0.03) 0px, 
+      rgba(28, 160, 77, 0.03) 2px, 
+      transparent 2px, 
+      transparent 10px);
+}
+
+/* تحسينات لأجهزة الجوال */
+@media (max-width: 768px) {
+  .page-box {
+    padding: 40px 25px;
+    margin: 60px auto 20px;
+  }
+  
+  .page-box h2 {
+    font-size: 26px;
+  }
+  
+  .page-box p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .reactivate-button {
+    padding: 16px 32px;
+    font-size: 18px;
+  }
+}
+
+/* تأثير ظهور لعناصر الصفحة */
+.page-box h2 {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.page-box p {
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.reactivate-button {
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تأثير إشعار نجاح التفعيل */
+.success-animation {
+  animation: successPulse 0.5s ease-in-out;
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* تخصيص مظهر رسائل toast */
+:root {
+  --toastify-color-success: #1ca04d;
+  --toastify-color-error: #e74c3c;
+  --toastify-font-family: 'Tajawal', sans-serif;
+  --toastify-text-color-light: #0a6e31;
+}
+
+.Toastify__toast {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  font-family: 'Tajawal', sans-serif !important;
+  direction: rtl !important;
+  padding: 16px !important;
+}
+
+.Toastify__toast-body {
+  font-family: 'Tajawal', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+}
+
+.Toastify__progress-bar {
+  height: 4px !important;
+}
