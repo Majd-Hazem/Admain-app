@@ -12,12 +12,12 @@ function ServicesList() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log("this response", data);
+        // console.log("this response", data);
         setServices(data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("خطأ في جلب البيانات:", error);
+        // console.error("خطأ في جلب البيانات:", error);
         setLoading(false);
       });
   }, []);

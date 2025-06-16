@@ -29,7 +29,8 @@ function Login() {
 
     if (isAdmin) {
       login("admin"); // تسجيل الدخول كأدمن
-      navigate("/services/student-info"); // التوجيه إلى لوحة التحكم
+      // التوجيه إلى لوحة التحكم
+      navigate("/admin-dashboard/services", { replace: true });
     } else {
       alert("اسم المستخدم أو كلمة المرور غير صحيحة");
     }
