@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { toast } from "react-toastify"; // ← تأكد من أنك تستخدمها
+import { toast, ToastContainer } from "react-toastify"; // تم إضافة ToastContainer هنا
+import "react-toastify/dist/ReactToastify.css"; // تأكد من استيراد الـ CSS الخاصة بـ react-toastify
 import "./ReactivatePage.css";
 
 function ReactivatePage() {
@@ -12,7 +13,8 @@ function ReactivatePage() {
         { headers: { Accept: "text/plain" } }
       );
 
-      toast.success(response.data || "تمت إعادة التفعيل بنجاح");
+      // console.log(response.data); // تحقق من محتوى الاستجابة في الـ console
+      toast.success("تمت إعادة التفعيل بنجاح");
     } catch (error) {
       console.error("❌ فشل في التفعيل:", error);
       toast.error("⚠️ فشل في إعادة التفعيل");
@@ -26,6 +28,9 @@ function ReactivatePage() {
       <button className="reactivate-button" onClick={handleReactivateAll}>
         إعادة تفعيل الكل
       </button>
+
+      {/* تأكد من أن ToastContainer موجود هنا */}
+      <ToastContainer />
     </div>
   );
 }

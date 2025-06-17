@@ -85,12 +85,12 @@ const ComplaintsPage = () => {
         const formatted = data.map((id) => ({ id, title: `شكوى رقم ${id}` }));
         setComplaints(formatted);
       } else {
-        console.error("الاستجابة غير متوقعة:", data);
+        // console.error("الاستجابة غير متوقعة:", data);
         setComplaints([]);
       }
     } catch (error) {
-      console.error("فشل في تحميل الشكاوى:", error);
-      toast.error("فشل في تحميل الشكاوى");
+      // console.error("فشل في تحميل الشكاوى:", error);
+      // toast.error("فشل في تحميل الشكاوى");
       setComplaints([]);
     } finally {
       setLoading(false);
@@ -127,7 +127,7 @@ const ComplaintsPage = () => {
         typeof balanceData === "number" ? balanceData : Number(balanceData) || 0
       );
     } catch (error) {
-      console.error("فشل تحميل بيانات الدفع:", error);
+      // console.error("فشل تحميل بيانات الدفع:", error);
       toast.error("فشل في تحميل بيانات الدفع");
       setPaymentData({
         buymentInfo: null,
@@ -152,11 +152,11 @@ const ComplaintsPage = () => {
       if (Array.isArray(filesData)) {
         setAttachedFiles(filesData);
       } else {
-        console.error("استجابة الملفات غير متوقعة:", filesData);
+        // console.error("استجابة الملفات غير متوقعة:", filesData);
         setAttachedFiles([]);
       }
     } catch (error) {
-      console.error("فشل تحميل الملفات المرفقة:", error);
+      // console.error("فشل تحميل الملفات المرفقة:", error);
       toast.error("فشل في تحميل الملفات المرفقة");
       setAttachedFiles([]);
     } finally {
@@ -214,7 +214,7 @@ const ComplaintsPage = () => {
       // جلب الملفات المرفقة
       await fetchAttachedFiles(complaintId);
     } catch (error) {
-      console.error("فشل تحميل تفاصيل الشكوى:", error);
+      // console.error("فشل تحميل تفاصيل الشكوى:", error);
       toast.error("فشل في تحميل تفاصيل الشكوى: " + error.message);
       setComplaintData({
         order: null,
@@ -260,13 +260,13 @@ const ComplaintsPage = () => {
       }
 
       const result = await response.json();
-      console.log("Reserved amount result:", result); // للتشخيص
+      // console.log("Reserved amount result:", result); // للتشخيص
 
       setReservedAmount(
         typeof result === "number" ? result : Number(result) || 0
       );
     } catch (error) {
-      console.error("خطأ في جلب القيمة المحجوزة:", error);
+      // console.error("خطأ في جلب القيمة المحجوزة:", error);
       setReservedAmount(0);
       toast.error("تعذر جلب القيمة المحجوزة");
     }
@@ -394,7 +394,7 @@ const ComplaintsPage = () => {
         into_transfar: transferTarget === "presenter" ? 1 : 2,
       };
 
-      console.log("Transfer API Body:", apiBody); // للتشخيص
+      // console.log("Transfer API Body:", apiBody); // للتشخيص
 
       const response = await fetch(
         "http://eallaenjazapi.runasp.net/api/Transaction/ADD_TRANSACTION_IN_ADMAIN",
@@ -408,16 +408,16 @@ const ComplaintsPage = () => {
         }
       );
 
-      console.log("Transfer Response Status:", response.status); // للتشخيص
+      // console.log("Transfer Response Status:", response.status); // للتشخيص
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.log("Transfer Error Response:", errorText); // للتشخيص
+        // console.log("Transfer Error Response:", errorText); // للتشخيص
         throw new Error(`خطأ من الخادم (${response.status}): ${errorText}`);
       }
 
       const result = await response.text();
-      console.log("Transfer Success Response:", result); // للتشخيص
+      // console.log("Transfer Success Response:", result); // للتشخيص
 
       toast.success("تم تحويل المبلغ بنجاح ✅");
 
@@ -434,7 +434,7 @@ const ComplaintsPage = () => {
       // إعادة جلب بيانات الدفع المحدثة
       await fetchPaymentData(selectedComplaint.id);
     } catch (error) {
-      console.error("خطأ في التحويل:", error);
+      // console.error("خطأ في التحويل:", error);
       const errorMessage = error.message || "فشل في عملية التحويل";
       setTransferError(errorMessage);
       toast.error("فشل التحويل: " + errorMessage);

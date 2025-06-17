@@ -57,7 +57,7 @@ const ServiceDetails = () => {
         const serviceRes = await axios.get(
           `http://eallaenjazapi.runasp.net/api/Serves_Student/GET_Serves_Student_By_Id/${serviceId}`
         );
-        console.log("📋 بيانات الخدمة:", serviceRes.data);
+        // console.log("📋 بيانات الخدمة:", serviceRes.data);
         setServiceInfo(serviceRes.data);
 
         const studentId = serviceRes.data.iD_Student;
@@ -69,10 +69,10 @@ const ServiceDetails = () => {
           const personalRes = await axios.get(
             `http://eallaenjazapi.runasp.net/api/Student_/GET_INFO_FROM_STUDENT_UNVIRSTY_PERSON_USED_SHOW_SERVES_BY_ID_STUDENT${studentId}`
           );
-          console.log("👤 بيانات الطالب:", personalRes.data);
+          // console.log("👤 بيانات الطالب:", personalRes.data);
           setPersonalInfo(personalRes.data);
         } catch (personalError) {
-          console.error("❌ خطأ في جلب بيانات الطالب:", personalError);
+          // console.error("❌ خطأ في جلب بيانات الطالب:", personalError);
           setPersonalInfo({
             fullName: "غير متوفر",
             email: "غير متوفر",
@@ -87,10 +87,10 @@ const ServiceDetails = () => {
           const mainServiceRes = await axios.get(
             `http://eallaenjazapi.runasp.net/api/ Name_Serves/GET_SERVES ${serveS_ID}`
           );
-          console.log("🎯 الخدمة الرئيسية:", mainServiceRes.data);
+          // console.log("🎯 الخدمة الرئيسية:", mainServiceRes.data);
           setMainServiceName(mainServiceRes.data?.name_Serves || "غير محدد");
         } catch (mainServiceError) {
-          console.error("❌ خطأ في جلب الخدمة الرئيسية:", mainServiceError);
+          // console.error("❌ خطأ في جلب الخدمة الرئيسية:", mainServiceError);
           setMainServiceName("غير محدد");
         }
 
@@ -99,10 +99,10 @@ const ServiceDetails = () => {
           const subServiceRes = await axios.get(
             `http://eallaenjazapi.runasp.net/api/Branch_Serves/GET_BRANCH_SERVES_BY_ID${branch_Server_Id}`
           );
-          console.log("🔸 الخدمة الفرعية:", subServiceRes.data);
+          // console.log("🔸 الخدمة الفرعية:", subServiceRes.data);
           setSubServiceName(subServiceRes.data?.name || "غير محدد");
         } catch (subServiceError) {
-          console.error("❌ خطأ في جلب الخدمة الفرعية:", subServiceError);
+          // console.error("❌ خطأ في جلب الخدمة الفرعية:", subServiceError);
           setSubServiceName("غير محدد");
         }
 
@@ -111,20 +111,20 @@ const ServiceDetails = () => {
           const imagesRes = await axios.get(
             `http://eallaenjazapi.runasp.net/api/Imege/GET_ALL_IMEGES_BY_ID_SERVES ${serviceId}`
           );
-          console.log("📷 الصور:", imagesRes.data);
+          // console.log("📷 الصور:", imagesRes.data);
 
           if (Array.isArray(imagesRes.data) && imagesRes.data.length > 0) {
             setImages(imagesRes.data);
           } else {
-            console.warn("⚠️ لم يتم العثور على صور للخدمة");
+            // console.warn("⚠️ لم يتم العثور على صور للخدمة");
             setImages([]);
           }
         } catch (imagesError) {
-          console.error("❌ خطأ في جلب الصور:", imagesError);
+          // console.error("❌ خطأ في جلب الصور:", imagesError);
           setImages([]);
         }
       } catch (error) {
-        console.error("❌ فشل في تحميل البيانات:", error);
+        // console.error("❌ فشل في تحميل البيانات:", error);
         toast.error("حدث خطأ في تحميل البيانات");
       } finally {
         setLoading(false);
@@ -216,7 +216,7 @@ const ServiceDetails = () => {
                 src={images[0].imeg_Url}
                 alt="الصورة الرئيسية"
                 onError={(e) => {
-                  console.error("خطأ في تحميل الصورة:", images[0].imeg_Url);
+                  // console.error("خطأ في تحميل الصورة:", images[0].imeg_Url);
                   e.target.style.display = "none";
                 }}
               />
@@ -312,10 +312,10 @@ const ServiceDetails = () => {
                     src={img.imeg_Url}
                     alt={`صورة ${index + 2}`}
                     onError={(e) => {
-                      console.error(
-                        "خطأ في تحميل الصورة الإضافية:",
-                        img.imeg_Url
-                      );
+                      // console.error(
+                      //   "خطأ في تحميل الصورة الإضافية:",
+                      //   img.imeg_Url
+                      // );
                       e.target.style.display = "none";
                     }}
                   />
@@ -336,10 +336,10 @@ const ServiceDetails = () => {
                   src={personalInfo.mainImageUrl}
                   alt="الصورة الشخصية"
                   onError={(e) => {
-                    console.error(
-                      "خطأ في تحميل الصورة الشخصية:",
-                      personalInfo.mainImageUrl
-                    );
+                    // console.error(
+                    //   "خطأ في تحميل الصورة الشخصية:",
+                    //   personalInfo.mainImageUrl
+                    // );
                     e.target.src = "/default-avatar.png"; // صورة افتراضية
                   }}
                 />
